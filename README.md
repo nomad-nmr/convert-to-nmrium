@@ -6,7 +6,7 @@ Takes as input, zip file, and returns a json string in the nmrium format.
 
 Optionally parameters, flag for printing to FS and the resulting save path.
 
-Usage: 
+Usage:
 
 const fs = require("fs");
 
