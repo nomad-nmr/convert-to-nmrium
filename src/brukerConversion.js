@@ -2,8 +2,8 @@
 Object.defineProperty(exports, '__esModule', { value: true })
 exports.toNMRIUM = exports.brukerToNMRIUM = exports.toJSON1D = exports.toJSON2D = void 0
 const fs = require('fs')
-const SpectraManager = require('./data/SpectraManager.js')
-const migrationManager = require('./data/migration/MigrationManager.js')
+const SpectraManager = require('../src/SpectraManager.js')
+const migrationManager = require('../src/migration/MigrationManager.js')
 const { file } = require('jszip')
 
 //for each spectra, convert into required format for each type (1D / 2D)
