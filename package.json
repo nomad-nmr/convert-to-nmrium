@@ -1,7 +1,7 @@
 {
-  "name": "conversionbackend",
-  "version": "1.0.0",
-  "description": "",
+  "name": "convert-to-nmrium",
+  "version": "0.0.1",
+  "description": "Converts NMR data to NMRium format",
   "main": "index.js",
   "scripts": {
     "start": "node server/index.js",
@@ -11,7 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3",
     "fs": "^0.0.1-security",
     "jszip": "^3.7.1",
     "lodash": "^4.17.21",
