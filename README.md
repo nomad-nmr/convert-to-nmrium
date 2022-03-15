@@ -1,6 +1,6 @@
-## convert-to-nmrium
+# convert-to-nmrium
 
-Library extracted from **[NMRium project](https://www.nmrium.org/)** to enable coversion to NMRium format on a application server in node.js environment.
+Library extracted from **[NMRium project](https://www.nmrium.org/)** enabling conversion to NMRium format on an application server in node.js environment.
 
 ### fromBrukerZip(inputhPath, options)
 
