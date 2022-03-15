@@ -1,9 +1,9 @@
-const fs = require('fs')
 const getNMRium = require('convert-to-nmrium')
 
-const zipFile = fs.readFileSync('./data/test-Bruker.zip')
-
 getNMRium
-  .fromBrukerZip(zipFile, true, './data/testFromBruker.nmrium')
-  .then(resp => console.log(resp))
+  .fromBrukerZip('./test/data/test-Bruker.zip', {
+    save: true,
+    outputPath: './test/data/testFromBruker.nmrium'
+  })
+  .then(nmriumObj => nmriumObj.spectra.forEach(i => console.log(i.display)))
   .catch(error => console.log(error))

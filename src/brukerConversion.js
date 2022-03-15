@@ -1,10 +1,7 @@
 'use strict'
-Object.defineProperty(exports, '__esModule', { value: true })
-exports.toNMRIUM = exports.brukerToNMRIUM = exports.toJSON1D = exports.toJSON2D = void 0
 const fs = require('fs')
 const SpectraManager = require('../src/SpectraManager.js')
 const migrationManager = require('../src/migration/MigrationManager.js')
-const { file } = require('jszip')
 
 //for each spectra, convert into required format for each type (1D / 2D)
 //returns spectra data and default presets.
@@ -27,8 +24,10 @@ exports.toNMRIUM = toNMRIUM
 
 //Takes as parameters the zipFile, a flag whether to save to FS and the filepath
 //returns a JSON string in the nmrium format
-async function brukerToNMRIUM(zipFile, save = false, filepath = 'default.json') {
+async function brukerToNMRIUM(inputPath, options) {
   try {
+    const zipFile = fs.readFileSync(inputPath)
+
     let specData = await SpectraManager.addBruker(
       {
         xy: true,
@@ -43,12 +42,12 @@ async function brukerToNMRIUM(zipFile, save = false, filepath = 'default.json') 
     let spectra = toNMRIUM(specData, 'DATA_SOURCE')
     //updates format to v2
     let migratedSpec = migrationManager.migrate(spectra)
-    if (save) {
-      fs.writeFileSync(filepath, JSON.stringify(migratedSpec))
-      console.log('JSON written to path:' + filepath)
+    if (options.save) {
+      fs.writeFileSync(options.outputPath, JSON.stringify(migratedSpec))
+      console.log('JSON written to path:' + options.outputPath)
     }
 
-    return JSON.stringify(migratedSpec)
+    return migratedSpec
   } catch (error) {
     console.error(error)
   }

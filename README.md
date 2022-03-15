@@ -1,17 +1,30 @@
-# brukerToNMRIUM
+## convert-to-nmrium
 
-Bruker to nmrium converter.
+Library extracted from **[NMRium project](https://www.nmrium.org/)** to enable coversion to NMRium format on a application server in node.js environment.
 
-Takes as input, zip file, and returns a json string in the nmrium format.
+### fromBrukerZip(inputhPath, options)
 
-Optionally parameters, flag for printing to FS and the resulting save path.
+options: object
 
-Usage:
+- save : boolean
+- outputPath : string
 
-const fs = require("fs");
+**Usage example:**
 
-const brukerConversion = require("./brukerConversion.js");
+```js
+const getNMRium = require('convert-to-nmrium')
 
-const zipFile = fs.readFileSync("./zipDataPath.zip");
+getNMRium
+  .fromBrukerZip('./test/data/test-Bruker.zip', {
+    save: true,
+    outputPath: './test/data/testFromBruker.nmrium'
+  })
+  .then(nmriumObj => console.log(nmriumObj.spectra))
+  .catch(error => console.log(error))
+```
 
-const convertedJSON = brukerConversion.brukerToNMRIUM(zipFile,true,"./JSONDataPath.json");
+**Test:**
+
+```bash
+npm run test
+```
