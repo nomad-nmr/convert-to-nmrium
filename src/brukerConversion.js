@@ -44,7 +44,9 @@ async function brukerToNMRIUM(inputPath, options) {
     let migratedSpec = migrationManager.migrate(spectra)
     if (options.save) {
       fs.writeFileSync(options.outputPath, JSON.stringify(migratedSpec))
-      console.log('JSON written to path:' + options.outputPath)
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('JSON written to path:' + options.outputPath)
+      }
     }
 
     return migratedSpec

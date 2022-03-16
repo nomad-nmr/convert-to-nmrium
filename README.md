@@ -25,6 +25,11 @@ getNMRium
 
 **Test:**
 
+To test package local enviroment
+
 ```bash
-npm run test
+cd  test
+npm link
+cd ..
+npm test
 ```
