@@ -25,7 +25,7 @@ getNMRium
 
 **Test:**
 
-To test package local enviroment
+To test package local environment
 
 ```bash
 cd  test
