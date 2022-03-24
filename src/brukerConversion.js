@@ -41,15 +41,36 @@ async function brukerToNMRIUM(inputPath, options) {
     //builds nmrium JSON object
     let spectra = toNMRIUM(specData, 'DATA_SOURCE')
     //updates format to v2
-    let migratedSpec = migrationManager.migrate(spectra)
+    const migratedSpec = migrationManager.migrate(spectra)
+
+    let output = { ...migratedSpec }
+
+    if (options.spectrumOnly) {
+      output = { spectra: migratedSpec.spectra.filter(spec => !spec.info.isFid) }
+    }
+
+    if (options.removeMeta) {
+      output.spectra = output.spectra.map(spec => {
+        spec.meta = {}
+        return spec
+      })
+    }
+
+    if (options.title) {
+      output.spectra = output.spectra.map(spec => {
+        spec.display.name = options.title
+        return spec
+      })
+    }
+
     if (options.save) {
-      fs.writeFileSync(options.outputPath, JSON.stringify(migratedSpec))
+      fs.writeFileSync(options.outputPath, JSON.stringify(output))
       if (process.env.NODE_ENV !== 'production') {
         console.log('JSON written to path:' + options.outputPath)
       }
     }
 
-    return migratedSpec
+    return output
   } catch (error) {
     console.error(error)
   }
