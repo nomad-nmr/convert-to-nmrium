@@ -1,12 +1,13 @@
 const getNMRium = require('convert-to-nmrium')
 
 getNMRium
-  .fromBrukerZip('./test/data/test-Bruker.zip', {
+  .fromBrukerZip('./test/data/NOMAD_download-HSQC.zip', {
     save: true,
     outputPath: './test/data/testFromBruker.nmrium',
     spectrumOnly: true,
     removeMeta: false,
+    removeProjections: true,
     title: 'Test'
   })
-  .then(nmriumObj => nmriumObj.spectra.forEach(i => console.log(i.id)))
+  .then(nmriumObj => nmriumObj.spectra.forEach(i => console.log(i.info)))
   .catch(error => console.log(error))

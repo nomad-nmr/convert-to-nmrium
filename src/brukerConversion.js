@@ -49,6 +49,10 @@ async function brukerToNMRIUM(inputPath, options) {
       output = { spectra: migratedSpec.spectra.filter(spec => !spec.info.isFid) }
     }
 
+    if (options.removeProjections && migratedSpec.spectra.length > 1) {
+      output.spectra = output.spectra.filter(spec => spec.info.isFid || spec.info.dimension === 2)
+    }
+
     if (options.removeMeta) {
       output.spectra = output.spectra.map(spec => {
         spec.meta = {}
