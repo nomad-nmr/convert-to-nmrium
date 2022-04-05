@@ -6,7 +6,7 @@ getNMRium
     outputPath: './test/data/testFromBruker.nmrium',
     spectrumOnly: true,
     removeMeta: false,
-    removeProjections: true,
+    removeProjections: false,
     title: 'Test'
   })
   .then(nmriumObj => nmriumObj.spectra.forEach(i => console.log(i.info)))
