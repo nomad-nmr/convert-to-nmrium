@@ -8,6 +8,10 @@ options: object
 
 - save : boolean
 - outputPath : string
+- spectrumOnly : boolean
+- removeMeta : boolean
+- removeProjections : boolean
+- title : string
 
 **Usage example:**
 

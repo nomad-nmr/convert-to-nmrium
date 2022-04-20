@@ -1,14 +1,20 @@
 {
   "name": "convert-to-nmrium",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Converts NMR data to NMRium format",
   "main": "index.js",
   "scripts": {
     "test": "node ./test/app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nomad-nmr/convert-to-nmrium.git"
+  },
+  "keywords": [
+    "nmrium"
+  ],
+  "author": "tomlebl",
+  "license": "MIT",
   "dependencies": {
     "fs": "^0.0.1-security",
     "jszip": "^3.7.1",

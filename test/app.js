@@ -1,7 +1,7 @@
 const getNMRium = require('convert-to-nmrium')
 
 getNMRium
-  .fromBrukerZip('./test/data/NOMAD_download-HSQC.zip', {
+  .fromBrukerZip('./test/data/test-Bruker.zip', {
     save: true,
     outputPath: './test/data/testFromBruker.nmrium',
     spectrumOnly: true,
