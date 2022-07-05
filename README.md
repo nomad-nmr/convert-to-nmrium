@@ -32,6 +32,7 @@ getNMRium
 To test the package in local environment
 
 ```bash
+npm link convert-to-nmrium
 cd  test
 npm link
 cd ..
