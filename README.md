@@ -38,3 +38,5 @@ npm link
 cd ..
 npm test
 ```
+## Development discontinued
+Replaced by **[nmr-load-save](https://github.com/cheminfo/nmr-load-save)** 
